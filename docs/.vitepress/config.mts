@@ -5,6 +5,7 @@ export default defineConfig({
   description:
     'Official documentation for sorokit-core and sorokit-ui.',
   cleanUrls: true,
+  appearance: 'dark',
   themeConfig: {
     logo: '/logo.svg',
     nav: [
