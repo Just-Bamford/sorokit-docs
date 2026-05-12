@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Official documentation and landing site for the sorokit ecosystem.",
   "scripts": {
-    "dev": "vitepress docs --host 0.0.0.0",
+    "dev": "vitepress dev docs --host 0.0.0.0",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs --host 0.0.0.0"
   },
