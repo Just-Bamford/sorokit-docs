@@ -89,6 +89,8 @@ hero:
   </div>
 </section>
 
+<!-- reference -->
+
 <section class="sk-section sk-ref-section">
   <div class="sk-section-header">
     <span class="sk-kicker">reference</span>
@@ -127,6 +129,8 @@ hero:
     </a>
   </div>
 </section>
+
+<!-- footer -->
 
 <section class="sk-section sk-contribute-section">
   <div class="sk-contribute-inner">
