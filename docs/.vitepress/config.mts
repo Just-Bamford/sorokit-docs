@@ -2,89 +2,72 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'sorokit',
-  description:
-    'Official documentation for sorokit-core and sorokit-ui.',
-  cleanUrls: true,
-  appearance: 'dark',
+  description: 'Framework-agnostic TypeScript SDK for Stellar applications.',
+  appearance: false,
+
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+  ],
+
   themeConfig: {
     logo: '/logo.svg',
+    siteTitle: 'sorokit',
+
     nav: [
-      { text: 'Guide', link: '/guide/' },
-      { text: 'Core', link: '/core/' },
-      { text: 'UI', link: '/ui/' },
-      { text: 'Reference', link: '/reference/' },
-      { text: 'Contributing', link: '/contributing' }
+      { text: 'guide', link: '/guide/getting-started' },
+      { text: 'reference', link: '/reference/core/wallet' },
+      { text: 'contributing', link: '/contributing' },
+      {
+        text: 'v0.1.0',
+        items: [
+          { text: 'changelog', link: '/changelog' },
+          { text: 'sorokit-core', link: 'https://github.com/Just-Bamford/sorokit-core' },
+          { text: 'sorokit-ui', link: 'https://github.com/Just-Bamford/sorokit-ui' },
+        ],
+      },
     ],
+
     sidebar: {
       '/guide/': [
         {
-          text: 'Guide',
+          text: 'guide',
           items: [
-            { text: 'Introduction', link: '/guide/' },
-            { text: 'Getting Started', link: '/guide/getting-started' },
-            { text: 'Core and UI', link: '/guide/core-and-ui' },
-            { text: 'Ecosystem', link: '/guide/ecosystem' }
-          ]
-        }
-      ],
-      '/core/': [
-        {
-          text: '@sorokit/core',
-          items: [
-            { text: 'Overview', link: '/core/' },
-            { text: 'Installation', link: '/core/installation' },
-            { text: 'Concepts', link: '/core/concepts' }
-          ]
+            { text: 'getting started', link: '/guide/getting-started' },
+            { text: 'core + ui', link: '/guide/core-and-ui' },
+          ],
         },
-        {
-          text: 'API Reference',
-          items: [
-            { text: 'Wallet', link: '/core/api/wallet' },
-            { text: 'Account', link: '/core/api/account' },
-            { text: 'Transaction', link: '/core/api/transaction' },
-            { text: 'Soroban', link: '/core/api/soroban' },
-            { text: 'Network', link: '/core/api/network' }
-          ]
-        }
-      ],
-      '/ui/': [
-        {
-          text: '@sorokit/ui',
-          items: [
-            { text: 'Overview', link: '/ui/' },
-            { text: 'Installation', link: '/ui/installation' },
-            { text: 'Components', link: '/ui/components' }
-          ]
-        },
-        {
-          text: 'API Reference',
-          items: [
-            { text: 'WalletButton', link: '/ui/api/wallet-button' },
-            { text: 'AccountCard', link: '/ui/api/account-card' },
-            { text: 'TransactionStatus', link: '/ui/api/transaction-status' },
-            { text: 'NetworkSwitcher', link: '/ui/api/network-switcher' }
-          ]
-        }
       ],
       '/reference/': [
         {
-          text: 'Reference',
+          text: '@sorokit/core',
           items: [
-            { text: 'Overview', link: '/reference/' },
-            { text: 'Configuration', link: '/reference/configuration' }
-          ]
-        }
-      ]
+            { text: 'wallet', link: '/reference/core/wallet' },
+            { text: 'account', link: '/reference/core/account' },
+            { text: 'transaction', link: '/reference/core/transaction' },
+            { text: 'soroban', link: '/reference/core/soroban' },
+            { text: 'network', link: '/reference/core/network' },
+          ],
+        },
+        {
+          text: '@sorokit/ui',
+          items: [
+            { text: 'components', link: '/reference/ui/components' },
+          ],
+        },
+      ],
     },
+
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/sorokit' }
+      { icon: 'github', link: 'https://github.com/Just-Bamford' },
     ],
-    search: {
-      provider: 'local'
-    },
+
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright (c) 2026 sorokit'
-    }
-  }
+      copyright: 'sorokit · open for contributions',
+    },
+
+    search: {
+      provider: 'local',
+    },
+  },
 })

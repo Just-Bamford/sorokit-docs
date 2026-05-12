@@ -2,112 +2,137 @@
 layout: home
 
 hero:
-  name: sorokit
-  text: Matrix-ready docs for the sorokit runtime.
-  tagline: Official documentation for @sorokit/core and @sorokit/ui, shaped like a terminal-native control surface for builders shipping Stellar and Soroban workflows.
+  text: sorokit
+  tagline: TypeScript SDK for Stellar and Soroban. Framework-agnostic core. Drop-in React UI kit. Built for contributors.
   actions:
     - theme: brand
-      text: Start building
+      text: Get started
       link: /guide/getting-started
     - theme: alt
       text: Core API
-      link: /core/
+      link: /reference/core/wallet
     - theme: alt
       text: UI kit
-      link: /ui/
-
-features:
-  - title: Runtime map
-    details: Follow the connection between wallet, account, network, transaction, and Soroban modules.
-  - title: Interface layer
-    details: Move from core TypeScript primitives to React components without losing the underlying model.
-  - title: Contributor ready
-    details: Pick up a stub, fill in a module, and keep the docs system expanding with the SDK.
+      link: /reference/ui/components
 ---
 
-<section class="sorokit-terminal-shell">
-  <div class="sorokit-terminal">
-    <div class="sorokit-terminal-bar">
-      <span></span>
-      <span></span>
-      <span></span>
-      <strong>sorokit://docs</strong>
+<!-- hero -->
+
+<section class="sk-terminal-section">
+  <div class="sk-terminal">
+    <div class="sk-terminal-bar">
+      <div class="sk-terminal-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="sk-terminal-title">sorokit://docs</div>
     </div>
-    <div class="sorokit-terminal-code">
-      <p><span class="prompt">$</span> npm install @sorokit/core @sorokit/ui</p>
-      <p><span class="muted">resolving modules...</span></p>
-      <p><span class="ok">loaded</span> wallet.account.transaction.soroban.network</p>
-      <br>
-      <p><span class="prompt">$</span> createSorokit({ network: "testnet" })</p>
-      <p><span class="ok">ready</span> client connected to docs matrix</p>
-      <br>
-      <p><span class="prompt">$</span> open /guide/core-and-ui</p>
-      <p><span class="muted">handoff</span> core primitives -> React interface</p>
+    <div class="sk-terminal-body">
+      <p><span class="sk-prompt">$</span> npm install @sorokit-core @sorokit-ui</p>
+      <p class="sk-muted">resolving peer dependencies...</p>
+      <p><span class="sk-ok">✓</span> wallet · account · transaction · soroban · network</p>
+      <br/>
+      <p><span class="sk-prompt">$</span> createSorokitClient({ network: "testnet" })</p>
+      <p><span class="sk-ok">✓</span> client ready · SorokitResult&lt;T&gt; · never throws</p>
+      <br/>
+      <p><span class="sk-prompt">$</span> <span class="sk-cursor">▌</span></p>
     </div>
   </div>
 </section>
 
-<section class="sorokit-band sorokit-flow">
-  <div>
-    <p class="sorokit-kicker">01 / System Map</p>
+<!-- features -->
+
+<section class="sk-section sk-features-section">
+  <div class="sk-features-grid">
+    <div class="sk-feature-card">
+      <div class="sk-feature-icon">01</div>
+      <h3>Runtime map</h3>
+      <p>Follow the connection between wallet, account, network, transaction, and Soroban modules.</p>
+    </div>
+    <div class="sk-feature-card">
+      <div class="sk-feature-icon">02</div>
+      <h3>Interface layer</h3>
+      <p>Move from core TypeScript primitives to React components without losing the underlying model.</p>
+    </div>
+    <div class="sk-feature-card">
+      <div class="sk-feature-icon">03</div>
+      <h3>Contributor ready</h3>
+      <p>Pick up a stub, fill in a module, and keep the docs system expanding with the SDK.</p>
+    </div>
+  </div>
+</section>
+
+<!-- arcitecture -->
+
+<section class="sk-section sk-arch-section">
+  <div class="sk-section-header">
+    <span class="sk-kicker">architecture</span>
     <h2>Core logic below. React surface above.</h2>
-    <p>
-      The docs trace the stack from portable TypeScript modules to UI components, so each page shows where a concept lives and how it moves through the app.
-    </p>
+    <p>Two packages, one stack. Use core alone in any framework, or drop in the UI kit for React.</p>
   </div>
-
-  <div class="sorokit-lanes">
-    <a class="sorokit-lane" href="/core/">
-      <span>core</span>
-      <strong>@sorokit/core</strong>
-      <p>Wallet, account, network, transaction, and Soroban modules documented as the framework-agnostic base layer.</p>
+  <div class="sk-arch">
+    <a class="sk-arch-card" href="/reference/ui/components">
+      <div class="sk-arch-label">presentation</div>
+      <h3>@sorokit/ui</h3>
+      <p>React components and hooks wired to the core client. No blockchain logic inside — strictly a UI layer built on shadcn/ui, Tailwind, and Radix.</p>
+      <div class="sk-arch-tag">WalletButton · AccountCard · TransactionStatus · NetworkSwitcher</div>
     </a>
-    <a class="sorokit-lane" href="/ui/">
-      <span>ui</span>
-      <strong>@sorokit/ui</strong>
-      <p>React providers, hooks, and components wired to the core client for product-facing workflows.</p>
+    <div class="sk-arch-arrow">
+      <span>depends on</span>
+      <svg width="1" height="48" viewBox="0 0 1 48"><line x1="0.5" y1="0" x2="0.5" y2="48" stroke="currentColor" stroke-dasharray="3 3"/></svg>
+    </div>
+    <a class="sk-arch-card sk-arch-card--core" href="/reference/core/wallet">
+      <div class="sk-arch-label">engine</div>
+      <h3>@sorokit/core</h3>
+      <p>Framework-agnostic TypeScript SDK. Pure functions, no-throw result types, full Horizon and Soroban RPC coverage.</p>
+      <div class="sk-arch-tag">wallet · account · transaction · soroban · network</div>
     </a>
   </div>
 </section>
 
-<section class="sorokit-band sorokit-matrix">
-  <div>
-    <p class="sorokit-kicker">02 / Reference Grid</p>
-    <h2>Every module gets a clear lane.</h2>
+<section class="sk-section sk-ref-section">
+  <div class="sk-section-header">
+    <span class="sk-kicker">reference</span>
+    <h2>Every module. One grid.</h2>
   </div>
-  <div class="sorokit-grid">
-    <a class="sorokit-panel" href="/core/api/wallet">
-      <h3>Wallet</h3>
-      <p>Connection state, signing, sessions, and wallet-provider notes.</p>
+  <div class="sk-ref-grid">
+    <a class="sk-ref-card" href="/reference/core/wallet">
+      <h4>wallet</h4>
+      <p>Connect, disconnect, and sign transactions via Stellar Wallets Kit adapters.</p>
+      <span class="sk-ref-pkg">core</span>
     </a>
-    <a class="sorokit-panel" href="/core/api/transaction">
-      <h3>Transaction</h3>
-      <p>Build, simulate, sign, submit, and track network status.</p>
+    <a class="sk-ref-card" href="/reference/core/account">
+      <h4>account</h4>
+      <p>Fetch account info, balances, and trustlines from Horizon.</p>
+      <span class="sk-ref-pkg">core</span>
     </a>
-    <a class="sorokit-panel" href="/ui/api/wallet-button">
-      <h3>WalletButton</h3>
-      <p>The React entry point for connecting users to a wallet flow.</p>
+    <a class="sk-ref-card" href="/reference/core/transaction">
+      <h4>transaction</h4>
+      <p>Build, sign, submit, and track transactions. Payments, path payments, custom XDR.</p>
+      <span class="sk-ref-pkg">core</span>
+    </a>
+    <a class="sk-ref-card" href="/reference/core/soroban">
+      <h4>soroban</h4>
+      <p>Read and invoke smart contracts. Handles simulation, fee bumps, and result parsing.</p>
+      <span class="sk-ref-pkg">core</span>
+    </a>
+    <a class="sk-ref-card" href="/reference/core/network">
+      <h4>network</h4>
+      <p>First-class mainnet, testnet, and futurenet support. Switch at runtime.</p>
+      <span class="sk-ref-pkg">core</span>
+    </a>
+    <a class="sk-ref-card" href="/reference/ui/components">
+      <h4>components</h4>
+      <p>React UI kit. Every component accepts a sorokit client and delegates all network calls to core.</p>
+      <span class="sk-ref-pkg sk-ref-pkg--ui">ui</span>
     </a>
   </div>
 </section>
 
-<section class="sorokit-band sorokit-checklist">
-  <div>
-    <p class="sorokit-kicker">03 / Docs Workflow</p>
-    <h2>Stubbed where the API is still moving. Structured where it matters.</h2>
-  </div>
-  <div class="sorokit-grid">
-    <div class="sorokit-panel">
-      <h3>Install</h3>
-      <p>Package-manager commands, peer dependencies, and quick starts for both layers.</p>
-    </div>
-    <div class="sorokit-panel">
-      <h3>Wire</h3>
-      <p>Guidance for passing a core client into the React provider and keeping concerns split.</p>
-    </div>
-    <div class="sorokit-panel">
-      <h3>Contribute</h3>
-      <p>Pick a stub, replace placeholders, add examples, and run the build before review.</p>
-    </div>
+<section class="sk-section sk-contribute-section">
+  <div class="sk-contribute-inner">
+    <span class="sk-kicker">contributing</span>
+    <h2>Pick up a stub. Ship a page.</h2>
+    <p>Most reference pages are stubs waiting for contributors. Fork the repo, fill in a module, open a PR.</p>
+    <a class="sk-contribute-btn" href="/contributing">Read the contributing guide →</a>
   </div>
 </section>
