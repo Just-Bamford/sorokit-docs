@@ -1,0 +1,18 @@
+{
+  "name": "sorokit-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Official documentation and landing site for the sorokit ecosystem.",
+  "scripts": {
+    "dev": "vitepress docs --host 0.0.0.0",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "@fontsource-variable/ibm-plex-sans": "^5.2.8",
+    "geist": "^1.7.0",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
+  }
+}
