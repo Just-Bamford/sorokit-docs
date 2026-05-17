@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sorokit</title>
+    <meta
+      name="description"
+      content="Framework-agnostic TypeScript SDK for Stellar and Soroban. Official docs for @sorokit/core and @sorokit/ui."
+    />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <style>
+      @font-face {
+        font-family: "Geist Pixel Circle";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/fonts/GeistPixel-Circle.woff2") format("woff2");
+      }
+    </style>
+    <link rel="stylesheet" href="/fonts/suse.css" />
+    <link rel="stylesheet" href="/fonts/jetbrains-mono.css" />
+
+    <style>
+      :root {
+        --bg: #050505;
+        --accent: #1eff5a;
+        --text: #f2fff5;
+        --muted: #a7cbb0;
+        --grid: #111111;
+        --terminal-bg: #030603;
+        --terminal-border: rgba(30, 255, 90, 0.28);
+
+        --font-heading: "Geist Pixel Circle", ui-sans-serif, system-ui, sans-serif;
+        --font-body: "SUSE", ui-sans-serif, system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+          Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        background:
+          repeating-linear-gradient(
+            90deg,
+            transparent 0 95px,
+            var(--grid) 95px 96px
+          ),
+          var(--bg);
+        font-family: var(--font-body);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Nav */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        background: rgba(5, 5, 5, 0.84);
+        border-bottom: 1px solid var(--grid);
+        backdrop-filter: blur(16px);
+        z-index: 10;
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-heading);
+        letter-spacing: 0;
+      }
+
+      .brand img {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
+      .nav-links {
+        display: inline-flex;
+        gap: 16px;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        text-transform: lowercase;
+        color: var(--muted);
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      /* Hero */
+      main {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding-top: 64px;
+      }
+
+      .hero {
+        width: 100%;
+        max-width: 700px;
+        text-align: center;
+        padding: 48px 0 32px;
+      }
+
+      h1 {
+        font-family: var(--font-heading);
+        font-weight: 400;
+        font-size: 56px;
+        line-height: 1.05;
+        margin: 0;
+        letter-spacing: 0;
+      }
+
+      .tagline {
+        margin: 14px auto 0;
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .terminal {
+        margin: 28px auto 0;
+        border: 1px solid var(--terminal-border);
+        border-radius: 10px;
+        background: var(--terminal-bg);
+        text-align: left;
+        overflow: hidden;
+      }
+
+      .terminal-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-bottom: 1px solid rgba(30, 255, 90, 0.14);
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+      }
+
+      .dots {
+        display: inline-flex;
+        gap: 6px;
+      }
+
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(30, 255, 90, 0.5);
+        background: rgba(30, 255, 90, 0.14);
+      }
+
+      .terminal pre {
+        margin: 0;
+        padding: 18px 18px 20px;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        line-height: 1.85;
+        color: var(--text);
+        overflow: auto;
+      }
+
+      .prompt {
+        color: var(--accent);
+      }
+
+      .buttons {
+        margin-top: 22px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        padding: 0 14px;
+        border-radius: 10px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        text-transform: lowercase;
+        border: 1px solid rgba(30, 255, 90, 0.25);
+        background: rgba(30, 255, 90, 0.06);
+        color: var(--text);
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #031006;
+      }
+
+      .btn:hover {
+        text-decoration: none;
+        transform: translateY(-1px);
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--grid);
+        padding: 22px 0;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links {
+        display: inline-flex;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .footer-links a:hover {
+        color: var(--text);
+      }
+
+      @media (max-width: 520px) {
+        h1 {
+          font-size: 44px;
+        }
+        .hero {
+          padding: 38px 0 24px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="container nav-inner">
+        <a class="brand" href="/">
+          <img src="/favicon.svg" alt="" />
+          <span>sorokit</span>
+        </a>
+        <div class="nav-links">
+          <a href="/guide/getting-started">guide</a>
+          <a href="/reference/">reference</a>
+          <a href="/contributing">contributing</a>
+          <a href="https://github.com/Just-Bamford/sorokit-docs" rel="noreferrer">github</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <section class="hero" aria-label="hero">
+          <h1>sorokit</h1>
+          <p class="tagline">
+            TypeScript SDK for Stellar and Soroban. Framework-agnostic core. Drop-in React UI kit.
+          </p>
+
+          <div class="terminal" aria-label="terminal">
+            <div class="terminal-bar">
+              <span class="dots" aria-hidden="true">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </span>
+              <span>sorokit://install</span>
+            </div>
+            <pre><code><span class="prompt">$</span> npm install @sorokit/core @sorokit/ui</code></pre>
+          </div>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="/guide/getting-started">get started</a>
+            <a class="btn" href="/reference/">reference</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>© 2026 sorokit. Built by Bamford</div>
+        <div class="footer-links">
+          <a href="/guide/">docs</a>
+          <a href="/reference/core/wallet">core</a>
+          <a href="/reference/ui/components">ui</a>
+          <a href="https://github.com/Just-Bamford/sorokit-docs" rel="noreferrer">github</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+

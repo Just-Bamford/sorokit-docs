@@ -6,7 +6,7 @@ export default defineConfig({
   appearance: false,
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', href: '/favicon.svg' }],
   ],
 
   themeConfig: {

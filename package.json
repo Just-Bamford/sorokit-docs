@@ -11,13 +11,14 @@
   },
   "devDependencies": {
     "@fontsource-variable/ibm-plex-sans": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/suse": "^5.2.9",
     "geist": "^1.7.0",
     "vitepress": "^1.6.3",
     "vue": "^3.5.13"
   },
   "dependencies": {
     "@fontsource-variable/fira-code": "^5.2.7",
-    "@fontsource/source-code-pro": "^5.2.7",
-    "@fontsource/suse": "^5.2.9"
+    "@fontsource/source-code-pro": "^5.2.7"
   }
 }
